@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:notes_app/Views/notes_view.dart';
 
 void main() {
@@ -14,7 +15,9 @@ class NotesApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Notes App",
       home: const NotesView(),
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+          brightness: Brightness.dark,
+          fontFamily: GoogleFonts.poppins().fontFamily),
     );
   }
 }
