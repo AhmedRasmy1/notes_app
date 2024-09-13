@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/Views/Widgets/custom_search_icon.dart';
 import 'package:notes_app/Views/Widgets/notes_view_body.dart';
+import 'package:notes_app/Views/custom_button_sheet.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({super.key});
@@ -9,7 +10,13 @@ class NotesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return const AddNoteButtonSheet();
+              });
+        },
         backgroundColor: const Color(0xff60ffd9),
         shape: const StadiumBorder(),
         child: const Icon(
