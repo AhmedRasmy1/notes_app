@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/Views/Widgets/custom_search_icon.dart';
+import 'package:notes_app/Views/Widgets/custom_icon.dart';
 import 'package:notes_app/Views/Widgets/notes_view_body.dart';
 import 'package:notes_app/Views/custom_button_sheet.dart';
 
@@ -25,7 +25,11 @@ class NotesView extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        actions: const [CustomSearchIcon()],
+        actions: const [
+          CustomIcon(
+            icon: Icons.search,
+          )
+        ],
         title: const Padding(
           padding: EdgeInsets.only(left: 10),
           child: Text(
