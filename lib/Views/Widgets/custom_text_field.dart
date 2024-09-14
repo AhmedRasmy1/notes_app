@@ -7,14 +7,24 @@ class CustomTextField extends StatelessWidget {
     required this.maxLines,
     required this.hintText,
     required this.labelText,
+    this.onSaved,
   });
   final int maxLines;
   final String hintText;
   final String labelText;
+  final Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      onSaved: onSaved,
       maxLines: maxLines,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter some text';
+        } else {
+          return null;
+        }
+      },
       decoration: InputDecoration(
           hintText: hintText,
           border: const OutlineInputBorder(

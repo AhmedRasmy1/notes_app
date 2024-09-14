@@ -10,28 +10,69 @@ class AddNoteButtonSheet extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.all(20),
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CustomTextField(
-              maxLines: 1,
-              labelText: "Title",
-              hintText: "Title",
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            CustomTextField(
-              maxLines: 6,
-              labelText: "Content",
-              hintText: "Content",
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            CustomElevatedButton(),
-          ],
-        ),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
+
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({
+    super.key,
+  });
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final _key = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+  String? titlr, subtitle;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _key,
+      autovalidateMode: autovalidateMode,
+      onChanged: () {},
+      child: Column(
+        children: [
+          CustomTextField(
+            onSaved: (value) {
+              titlr = value;
+            },
+            maxLines: 1,
+            labelText: "Title",
+            hintText: "Title",
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          CustomTextField(
+            onSaved: (value) {
+              subtitle = value;
+            },
+            maxLines: 6,
+            labelText: "Content",
+            hintText: "Content",
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          CustomElevatedButton(
+            onPressed: () {
+              if (_key.currentState!.validate()) {
+                _key.currentState!.save();
+                Navigator.of(context).pop();
+              } else {
+                setState(() {
+                  autovalidateMode = AutovalidateMode.always;
+                });
+              }
+            },
+          ),
+        ],
       ),
     );
   }
