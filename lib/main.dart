@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:notes_app/Cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/Models/note_model.dart';
 import 'package:notes_app/Views/Widgets/constants.dart';
 import 'package:notes_app/Views/notes_view.dart';

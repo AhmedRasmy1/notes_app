@@ -4,8 +4,10 @@ class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     super.key,
     this.onPressed,
+    this.isLoading = false,
   });
   final void Function()? onPressed;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -17,11 +19,15 @@ class CustomElevatedButton extends StatelessWidget {
           shape: const WidgetStatePropertyAll(RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12)),
           ))),
-      child: const Text(
-        "Add Note",
-        style: TextStyle(
-            color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
-      ),
+      child: isLoading
+          ? const CircularProgressIndicator(color: Colors.black)
+          : const Text(
+              "Add Note",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
     );
   }
 }
