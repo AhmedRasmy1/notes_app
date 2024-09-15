@@ -45,8 +45,7 @@ class NoteItem extends StatelessWidget {
                   color: Colors.black,
                 ),
                 onPressed: () {
-                  // Add your delete functionality here
-                  // For example: show a confirmation dialog or delete the note from your data source
+                  note.delete();
                 },
               ),
             ),
