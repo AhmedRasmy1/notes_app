@@ -36,10 +36,9 @@ class NoteItem extends StatelessWidget {
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 15),
                 child: Text(note.titel,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: GoogleFonts.poppins().fontFamily,
+                      fontSize: 25,
                     )),
               ),
               subtitle: Text(note.subtitle,
@@ -61,7 +60,8 @@ class NoteItem extends StatelessWidget {
               padding: const EdgeInsets.only(right: 15, top: 15),
               child: Text(
                 DateFormat.yMd().format(DateTime.now()),
-                style: const TextStyle(color: Color(0xff9b7239), fontSize: 17),
+                style: TextStyle(
+                    color: Colors.black.withOpacity(0.7), fontSize: 17),
               ),
             ),
           ],
