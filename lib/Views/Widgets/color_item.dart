@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/Cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/Views/Widgets/constants.dart';
 
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isSelected, required this.color});
@@ -18,7 +21,7 @@ class ColorItem extends StatelessWidget {
             ),
           )
         : CircleAvatar(
-            radius: 37,
+            radius: 31,
             backgroundColor: color,
           );
   }
@@ -33,34 +36,24 @@ class PickColorItem extends StatefulWidget {
 
 class _PickColorItemState extends State<PickColorItem> {
   int currentIndex = 0;
-  List<Color> color = [
-    Colors.blue,
-    Colors.red,
-    Colors.green,
-    Colors.yellow,
-    Colors.purple,
-    Colors.pink,
-    Colors.orange,
-    Colors.brown,
-    Colors.indigo,
-    Colors.teal,
-  ];
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: color.length,
+        itemCount: kColor.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
               currentIndex = index;
+              BlocProvider.of<AddNoteCubit>(context).color = kColor[index];
               setState(() {});
             },
             child: ColorItem(
               isSelected: currentIndex == index,
-              color: color[index],
+              color: kColor[index],
             ),
           );
         },

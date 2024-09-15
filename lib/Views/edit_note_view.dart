@@ -4,6 +4,7 @@ import 'package:notes_app/Cubits/cubit/notes_cubit.dart';
 import 'package:notes_app/Models/note_model.dart';
 import 'package:notes_app/Views/Widgets/custom_icon.dart';
 import 'package:notes_app/Views/Widgets/custom_text_field.dart';
+import 'package:notes_app/Views/Widgets/edit_note_color.dart';
 
 class EditNote extends StatefulWidget {
   const EditNote({super.key, required this.note});
@@ -39,25 +40,31 @@ class _EditNoteState extends State<EditNote> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(children: [
-          CustomTextField(
-            onChanged: (value) {
-              title = value;
-            },
-            maxLines: 1,
-            hintText: widget.note.titel,
-            labelText: "Title",
-          ),
-          const SizedBox(height: 20),
-          CustomTextField(
-            onChanged: (value) {
-              content = value;
-            },
-            maxLines: 6,
-            hintText: widget.note.subtitle,
-            labelText: "Content",
-          ),
-        ]),
+        child: Column(
+          children: [
+            CustomTextField(
+              onChanged: (value) {
+                title = value;
+              },
+              maxLines: 1,
+              hintText: widget.note.titel,
+              labelText: "Title",
+            ),
+            const SizedBox(height: 20),
+            CustomTextField(
+              onChanged: (value) {
+                content = value;
+              },
+              maxLines: 6,
+              hintText: widget.note.subtitle,
+              labelText: "Content",
+            ),
+            const SizedBox(height: 30),
+            SelectedEditNoteColor(
+              note: widget.note,
+            ),
+          ],
+        ),
       ),
     );
   }
