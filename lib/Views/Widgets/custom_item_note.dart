@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:notes_app/Models/note_model.dart';
 import 'package:notes_app/Views/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+  const NoteItem({super.key, required this.note});
 
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -15,9 +17,9 @@ class NoteItem extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
-          color: Color(0xfffecd7e),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(12)),
+          color: Color(note.color),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -25,15 +27,16 @@ class NoteItem extends StatelessWidget {
             ListTile(
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 15),
-                child: Text("Flutter Tips",
+                child: Text(note.titel,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 32,
                       fontFamily: GoogleFonts.poppins().fontFamily,
                     )),
               ),
-              subtitle: const Text("Ahmed Hisham Rasmy and Ninja Mido Rasmy",
-                  style: TextStyle(color: Color(0xff9b7239), fontSize: 18)),
+              subtitle: Text(note.subtitle,
+                  style:
+                      const TextStyle(color: Color(0xff9b7239), fontSize: 18)),
               trailing: IconButton(
                 icon: const Icon(
                   FontAwesomeIcons.trash,
@@ -46,11 +49,11 @@ class NoteItem extends StatelessWidget {
                 },
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 15, top: 15),
+            Padding(
+              padding: const EdgeInsets.only(right: 15, top: 15),
               child: Text(
-                "Sep23,2022",
-                style: TextStyle(color: Color(0xff9b7239), fontSize: 17),
+                note.date,
+                style: const TextStyle(color: Color(0xff9b7239), fontSize: 17),
               ),
             ),
           ],
