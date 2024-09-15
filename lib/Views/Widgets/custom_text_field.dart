@@ -8,15 +8,18 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     required this.labelText,
     this.onSaved,
+    this.onChanged,
   });
   final int maxLines;
   final String hintText;
   final String labelText;
   final Function(String?)? onSaved;
+  final Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onSaved: onSaved,
+      onChanged: onChanged,
       maxLines: maxLines,
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -39,7 +42,7 @@ class CustomTextField extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          contentPadding: EdgeInsets.all(20)),
+          contentPadding: const EdgeInsets.all(20)),
     );
   }
 }

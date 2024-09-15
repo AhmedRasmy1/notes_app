@@ -4,7 +4,9 @@ class CustomIcon extends StatelessWidget {
   const CustomIcon({
     super.key,
     required this.icon,
+    this.onPressed,
   });
+  final void Function()? onPressed;
   final IconData icon;
 
   @override
@@ -19,7 +21,7 @@ class CustomIcon extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0), // Apply padding around the icon
           child: IconButton(
-            onPressed: () {},
+            onPressed: onPressed,
             icon: Icon(icon, size: 25),
           ),
         ),

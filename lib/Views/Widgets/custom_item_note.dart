@@ -16,7 +16,11 @@ class NoteItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const EditNote()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => EditNote(
+                      note: note,
+                    )));
         BlocProvider.of<NotesCubit>(context).fetchAllNotes();
       },
       child: Container(
@@ -39,8 +43,8 @@ class NoteItem extends StatelessWidget {
                     )),
               ),
               subtitle: Text(note.subtitle,
-                  style:
-                      const TextStyle(color: Color(0xff9b7239), fontSize: 18)),
+                  style: TextStyle(
+                      color: Colors.black.withOpacity(0.7), fontSize: 18)),
               trailing: IconButton(
                 icon: const Icon(
                   FontAwesomeIcons.trash,
